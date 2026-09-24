@@ -1,0 +1,436 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Para el amor de mi vida 💗</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: "Segoe UI", sans-serif;
+      background: linear-gradient(135deg, #ffe6f0, #fff5dc, #e8f7ff);
+      color: #5d4650;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* ---------- CORAZONES ---------- */
+
+    .heart {
+      position: fixed;
+      bottom: -30px;
+      font-size: 20px;
+      animation: subir 7s linear infinite;
+      opacity: 0.7;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    @keyframes subir {
+      0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 0;
+      }
+
+      20% {
+        opacity: 0.8;
+      }
+
+      100% {
+        transform: translateY(-110vh) rotate(360deg);
+        opacity: 0;
+      }
+    }
+
+    /* ---------- HERO ---------- */
+
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 30px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.75);
+      backdrop-filter: blur(12px);
+      padding: 50px 35px;
+      border-radius: 35px;
+      max-width: 750px;
+      box-shadow: 0 20px 50px rgba(160, 100, 120, 0.15);
+      border: 2px solid rgba(255, 255, 255, 0.8);
+    }
+
+    .emoji {
+      font-size: 70px;
+      animation: saltito 2s infinite ease-in-out;
+      display: inline-block;
+      margin-bottom: 15px;
+    }
+
+    @keyframes saltito {
+      0%, 100% {
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(-12px);
+      }
+    }
+
+    h1 {
+      font-size: clamp(2.5rem, 7vw, 5rem);
+      color: #e889a8;
+      margin-bottom: 15px;
+    }
+
+    .subtitulo {
+      font-size: 1.25rem;
+      line-height: 1.7;
+      margin-bottom: 30px;
+    }
+
+    .nombre {
+      color: #d66f94;
+      font-weight: bold;
+    }
+
+    /* ---------- BOTÓN ---------- */
+
+    button {
+      border: none;
+      padding: 15px 28px;
+      border-radius: 50px;
+      background: #f39ab7;
+      color: white;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: 0.3s;
+      box-shadow: 0 8px 20px rgba(220, 120, 150, 0.25);
+    }
+
+    button:hover {
+      transform: translateY(-4px) scale(1.03);
+      background: #e87fa1;
+    }
+
+    /* ---------- MENSAJE ---------- */
+
+    #mensaje {
+      display: none;
+      margin-top: 25px;
+      padding: 25px;
+      background: #fff4f8;
+      border-radius: 25px;
+      line-height: 1.8;
+      animation: aparecer 0.7s ease;
+    }
+
+    @keyframes aparecer {
+      from {
+        opacity: 0;
+        transform: scale(0.9);
+      }
+
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    /* ---------- SECCIONES ---------- */
+
+    section {
+      padding: 90px 25px;
+      text-align: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    section h2 {
+      color: #d97899;
+      font-size: 2.5rem;
+      margin-bottom: 40px;
+    }
+
+    /* ---------- RECUERDOS ---------- */
+
+    .recuerdos {
+      max-width: 1000px;
+      margin: auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 25px;
+    }
+
+    .recuerdo {
+      background: white;
+      padding: 30px 20px;
+      border-radius: 30px;
+      box-shadow: 0 10px 30px rgba(120, 80, 100, 0.1);
+      transition: 0.3s;
+    }
+
+    .recuerdo:hover {
+      transform: translateY(-8px) rotate(1deg);
+    }
+
+    .recuerdo span {
+      font-size: 45px;
+      display: block;
+      margin-bottom: 15px;
+    }
+
+    .recuerdo h3 {
+      color: #d87898;
+      margin-bottom: 10px;
+    }
+
+    .recuerdo p {
+      line-height: 1.6;
+    }
+
+    /* ---------- CARTA ---------- */
+
+    .carta {
+      max-width: 700px;
+      margin: auto;
+      background: #fffdf7;
+      padding: 45px;
+      border-radius: 20px;
+      box-shadow: 0 15px 35px rgba(100, 80, 60, 0.12);
+      position: relative;
+    }
+
+    .carta::before {
+      content: "💌";
+      font-size: 45px;
+      position: absolute;
+      top: -25px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .carta p {
+      line-height: 2;
+      font-size: 1.1rem;
+      text-align: left;
+    }
+
+    /* ---------- FOOTER ---------- */
+
+    footer {
+      text-align: center;
+      padding: 50px 20px;
+      color: #9c7280;
+      position: relative;
+      z-index: 1;
+    }
+
+    .corazon-final {
+      font-size: 35px;
+      animation: latido 1.2s infinite;
+      display: inline-block;
+    }
+
+    @keyframes latido {
+      0%, 100% {
+        transform: scale(1);
+      }
+
+      50% {
+        transform: scale(1.25);
+      }
+    }
+
+    /* ---------- RESPONSIVE ---------- */
+
+    @media (max-width: 600px) {
+      .card {
+        padding: 40px 20px;
+      }
+
+      .carta {
+        padding: 35px 22px;
+      }
+
+      section {
+        padding: 70px 20px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Corazones flotantes -->
+  <div class="heart" style="left: 10%; animation-delay: 0s;">♡</div>
+  <div class="heart" style="left: 25%; animation-delay: 2s;">♥</div>
+  <div class="heart" style="left: 45%; animation-delay: 4s;">♡</div>
+  <div class="heart" style="left: 70%; animation-delay: 1s;">♥</div>
+  <div class="heart" style="left: 90%; animation-delay: 3s;">♡</div>
+
+  <!-- INICIO -->
+  <main class="hero">
+
+    <div class="card">
+
+      <div class="emoji">🎂</div>
+
+      <h1>¡Feliz cumpleaños!</h1>
+
+      <p class="subtitulo">
+        Felices 26 viejo choto, te amo demasiado, pasalo lindo y que siempre seas feliz
+        <br><br>
+
+        <span class="nombre">Para vos, con muchísimo amor 💗</span>
+      </p>
+
+      <button onclick="mostrarMensaje()">
+        🎁 Abrir sorpresa
+      </button>
+
+      <div id="mensaje">
+        ✨ Sorpresa ✨
+        <br><br>
+
+        Gracias por dejarme compartir ya el 2do cumpleaños juntos, y los muchos más que vamos a compartir porque mientras yo siga en tu vida, siempre vamos a festejarlo
+        <br><br>
+
+        Gracias por ser vos. 🥺💗
+      </div>
+
+    </div>
+
+  </main>
+
+  <!-- RECUERDOS -->
+  <section>
+
+    <h2>Pequeñas cosas que adoro de vos 🌷</h2>
+
+    <div class="recuerdos">
+
+      <div class="recuerdo">
+        <span>🌸</span>
+        <h3>Tu forma de ser</h3>
+        <p>
+          Hay algo en tu manera de ser que hace
+          que todo se sienta un poquito más especial.
+        </p>
+      </div>
+
+      <div class="recuerdo">
+        <span>🧸</span>
+        <h3>Los momentos</h3>
+        <p>
+          Incluso los momentos más simples pueden
+          convertirse en recuerdos muy bonitos.
+        </p>
+      </div>
+
+      <div class="recuerdo">
+        <span>🌙</span>
+        <h3>Tus detalles</h3>
+        <p>
+          Esas pequeñas cosas que quizás parecen
+          insignificantes, pero que significan muchísimo.
+        </p>
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- CARTA -->
+  <section>
+
+    <h2>Una cartita para vos 💌</h2>
+
+    <div class="carta">
+
+      <p>
+        Querido cumpleañero:
+        <br><br>
+
+        Hoy quería darte algo diferente.
+        No solamente un "feliz cumpleaños", sino un
+        pequeño recordatorio de internet hecho especialmente
+        para vos.
+        <br><br>
+
+        Ojalá cuando veas esto puedas sonreír aunque
+        sea un poquito, porque esa es una de las cosas
+        más lindas que podría pedir.
+        <br><br>
+
+        Deseo que tengas un hermoso cumpleaños,
+        momentos tranquilos, personas que te quieran
+        muchísimo y sueños que poco a poco se hagan
+        realidad.
+        <br><br>
+
+        Feliz cumpleaños. 🎂
+        <br>
+        Te merecés todo lo bonito que existe. 💗
+      </p>
+
+    </div>
+
+  </section>
+
+  <footer>
+    <div class="corazon-final">💗</div>
+    <br><br>
+    Hecho con mucho cariño especialmente para vos ✨
+  </footer>
+
+  <script>
+    function mostrarMensaje() {
+      const mensaje = document.getElementById("mensaje");
+
+      if (mensaje.style.display === "block") {
+        mensaje.style.display = "none";
+      } else {
+        mensaje.style.display = "block";
+      }
+    }
+
+    // Crear corazones automáticamente
+    setInterval(() => {
+
+      const heart = document.createElement("div");
+
+      heart.classList.add("heart");
+
+      const corazones = ["♡", "♥", "💗", "💕", "🌸"];
+      heart.innerText =
+        corazones[Math.floor(Math.random() * corazones.length)];
+
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.fontSize = (15 + Math.random() * 20) + "px";
+      heart.style.animationDuration = (5 + Math.random() * 5) + "s";
+
+      document.body.appendChild(heart);
+
+      setTimeout(() => {
+        heart.remove();
+      }, 10000);
+
+    }, 800);
+  </script>
+
+</body>
+</html>
+
